@@ -17,7 +17,7 @@ services:
     volumes:
       - ./data/s2:/var/lib/mysql
       - "./etc/mysql/my.cnf:/etc/my.cnf:ro"
-      - "./etc/s1:/etc/my.cnf.d:ro"
+      - "./etc/s2:/etc/my.cnf.d:ro"
     env_file:
       - server.env
     image: container-registry.oracle.com/mysql/community-server:9.0.1
@@ -29,7 +29,7 @@ services:
     volumes:
       - ./data/s3:/var/lib/mysql
       - "./etc/mysql/my.cnf:/etc/my.cnf:ro"
-      - "./etc/s1:/etc/my.cnf.d:ro"
+      - "./etc/s3:/etc/my.cnf.d:ro"
     env_file:
       - server.env
     image: container-registry.oracle.com/mysql/community-server:9.0.1
