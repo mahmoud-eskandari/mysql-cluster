@@ -31,7 +31,11 @@ docker compose exec -it s1 mysqlsh "root@s1:3306" --password="mysql" -f "/var/in
 ON:
 Please select a recovery method [C]lone/[I]ncremental recovery/[A]bort (default Clone):
 Insert: C
+```
 
+```bash
+mkdir ./data/mysqlrouter
+sudo chmod 7777 ./data/mysqlrouter -R
 ```
 * Up router
 ```
