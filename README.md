@@ -43,7 +43,7 @@ view logs:
 docker compose logs -f
 ```
 
-# Log in to cluster
+### Log in to cluster
 ```
 mysql root@localhost:6446 -p
 Password: mysql
