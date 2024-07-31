@@ -76,7 +76,7 @@ Change last line to:
       - ./mnt/disk1:/var/lib/mysql
 ```
 
-Architucture:
+Architecture:
 ```mermaid
 graph TD;
     SQLQueries-->Router;
