@@ -79,6 +79,7 @@ Change last line to:
 Architucture:
 ```mermaid
 graph TD;
+    SQLQueries-->Router;
     Router-->S1:Primary;
     Router-->S2:Secondary;
     Router-->S3:Secondary;
