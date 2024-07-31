@@ -5,7 +5,7 @@
 Install docker if you don't have docker on your linux machine
 
 ``` bash
-curl -lfSh https://get.docker.com -o docker.sh
+curl -fsSL https://get.docker.com -o docker.sh
 chmod +x docker.sh
 sudo ./docker.sh
 ```
