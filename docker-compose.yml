@@ -5,37 +5,47 @@ services:
       - server.env
     volumes:
       - ./data/s1:/var/lib/mysql
-      - "./etc/mysql/my.cnf:/etc/my.cnf:ro"
+      - "./etc/my.cnf:/etc/my.cnf:ro"
       - "./etc/s1:/etc/my.cnf.d:ro"
       - "./initialize.js:/var/initialize.js:ro"
     image: container-registry.oracle.com/mysql/community-server:9.0.1
     ports:
       - "3301:3306"
-    command: ["mysqld","--server_id=1","--skip-name-resolve"]
-
+    depends_on:
+      - s2
+      - s3
+    command: ["mysqld"]
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.1
   s2:
     volumes:
       - ./data/s2:/var/lib/mysql
-      - "./etc/mysql/my.cnf:/etc/my.cnf:ro"
+      - "./etc/my.cnf:/etc/my.cnf:ro"
       - "./etc/s2:/etc/my.cnf.d:ro"
     env_file:
       - server.env
     image: container-registry.oracle.com/mysql/community-server:9.0.1
-    command: ["mysqld","--server_id=2","--skip-name-resolve"]
+    command: ["mysqld"]
     ports:
       - "3302:3306"
-      
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.2
   s3:
     volumes:
       - ./data/s3:/var/lib/mysql
-      - "./etc/mysql/my.cnf:/etc/my.cnf:ro"
+      - "./etc/my.cnf:/etc/my.cnf:ro"
       - "./etc/s3:/etc/my.cnf.d:ro"
     env_file:
       - server.env
     image: container-registry.oracle.com/mysql/community-server:9.0.1
-    command: ["mysqld","--server_id=3","--skip-name-resolve"]
+    command: ["mysqld"]
     ports:
       - "3303:3306"
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.3
 
   router:
     volumes:
@@ -55,4 +65,12 @@ services:
       - s2
       - s3
     restart: on-failure
-
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.100
+        
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
