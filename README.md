@@ -53,6 +53,10 @@ mysql root@localhost:6446 -p
 Password: mysql
 ```
 
+### After reboot
+```
+docker compose exec -it s1 mysqlsh "root@s1:3306" --password="mysql" -f "/var/after_reboot.js"
+```
 ### Check Cluster Status:
 
 ``` bash

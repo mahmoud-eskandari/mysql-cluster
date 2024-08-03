@@ -5,9 +5,10 @@ services:
       - server.env
     volumes:
       - ./data/s1:/var/lib/mysql
-      - "./etc/my.cnf:/etc/my.cnf:ro"
-      - "./etc/s1:/etc/my.cnf.d:ro"
-      - "./initialize.js:/var/initialize.js:ro"
+      - "./etc/my.cnf:/etc/my.cnf"
+      - "./etc/s1:/etc/my.cnf.d"
+      - "./initialize.js:/var/initialize.js"
+      - "./after_reboot.js:/var/after_reboot.js"
     image: container-registry.oracle.com/mysql/community-server:9.0.1
     ports:
       - "3301:3306"
@@ -21,8 +22,8 @@ services:
   s2:
     volumes:
       - ./data/s2:/var/lib/mysql
-      - "./etc/my.cnf:/etc/my.cnf:ro"
-      - "./etc/s2:/etc/my.cnf.d:ro"
+      - "./etc/my.cnf:/etc/my.cnf"
+      - "./etc/s2:/etc/my.cnf.d"
     env_file:
       - server.env
     image: container-registry.oracle.com/mysql/community-server:9.0.1
@@ -35,8 +36,8 @@ services:
   s3:
     volumes:
       - ./data/s3:/var/lib/mysql
-      - "./etc/my.cnf:/etc/my.cnf:ro"
-      - "./etc/s3:/etc/my.cnf.d:ro"
+      - "./etc/my.cnf:/etc/my.cnf"
+      - "./etc/s3:/etc/my.cnf.d"
     env_file:
       - server.env
     image: container-registry.oracle.com/mysql/community-server:9.0.1

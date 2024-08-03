@@ -1,2 +1,5 @@
 [mysqld]
 server_id = 1
+bind-address = 172.20.128.1
+report_host = 172.20.128.1
+loose-group_replication_local_address = 172.20.128.1:33061
