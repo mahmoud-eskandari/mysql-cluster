@@ -26,6 +26,7 @@ docker compose up -d s1 s2 s3
 
 * initialize cluster (just before first use not more)
 ``` bash
+chmod +x up.sh
 docker compose exec -it s1 mysqlsh "root@s1:3306" --password="mysql" -f "/var/initialize.js" 
 
 ON:
@@ -52,10 +53,9 @@ docker compose logs -f
 mysql root@localhost:6446 -p
 Password: mysql
 ```
-
-### After reboot
+### After reboot/Turn un cluster
 ```
-docker compose exec -it s1 mysqlsh "root@s1:3306" --password="mysql" -f "/var/after_reboot.js"
+./up.sh
 ```
 ### Check Cluster Status:
 
