@@ -24,14 +24,26 @@ cd mysql-cluster
 docker compose up -d s1 s2 s3
 ```
 
-* initialize cluster (just before first use not more)
+* Initialize cluster (just before first use not more)
 ``` bash
 chmod +x up.sh
-docker compose exec -it s1 mysqlsh "root@s1:3306" --password="mysql" -f "/var/initialize.js" 
+```
+``` bash
+docker compose exec -it s1 mysqlsh "root@s1:3306" --password=mysql -f "/var/initialize.js" 
+```
 
-ON:
+Note:
+```
+When propt shows:
 Please select a recovery method [C]lone/[I]ncremental recovery/[A]bort (default Clone):
-Insert: C
+
+Then insert: C
+
+When it shows:
+Waiting for server restart...
+
+First time run: docker compose restart s2
+Then: docker compose restart s3
 ```
 
 ```bash
@@ -53,8 +65,8 @@ docker compose logs -f
 mysql root@localhost:6446 -p
 Password: mysql
 ```
-### After reboot/Turn un cluster
-```
+### After reboot/Turn on cluster
+``` bash
 ./up.sh
 ```
 ### Check Cluster Status:
