@@ -42,8 +42,8 @@ Then insert: C
 When it shows:
 Waiting for server restart...
 
-First time run: docker compose restart s2
-Then: docker compose restart s3
+First time run: `docker compose restart s2`
+Then: `docker compose restart s3`
 ```
 
 ```bash
